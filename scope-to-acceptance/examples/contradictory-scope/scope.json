@@ -1,0 +1,89 @@
+{
+  "brief": "SYNTHETIC BRIEF — all names and values are fictional and illustrative.\nProject: build a local support-message routing prototype for Example Studio.\nMap the routing rules before implementation.\nRoute synthetic messages to a category and demonstrate the result.\nDiscovery delivers a reviewed routing map. Implementation delivers a local prototype.\nThe illustrative budget is USD 900. The illustrative deadline is 2030-06-30.\nThe illustrative effort limit is 12 hours. Billing basis: Fixed fee.\nAccess approved for this fictional exercise: Local synthetic files only.\nNo production integration or ongoing hosting is requested.\nConflicting clarification: do not route synthetic messages to a category or demonstrate the result.\n",
+  "project_summary": "A local support-message routing prototype for Example Studio.",
+  "requirements": [
+    {
+      "id": "R-map",
+      "text": "Map the routing rules before implementation.",
+      "source_quote": "Map the routing rules before implementation."
+    },
+    {
+      "id": "R-route",
+      "text": "Route synthetic messages to a category and demonstrate the result.",
+      "source_quote": "Route synthetic messages to a category and demonstrate the result."
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "D-map",
+      "text": "Routing map for human review.",
+      "covers": [
+        "R-map"
+      ]
+    },
+    {
+      "id": "D-prototype",
+      "text": "Local prototype and synthetic demonstration cases.",
+      "covers": [
+        "R-route"
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "A-map",
+      "requirement_id": "R-map",
+      "check": "Reviewer compares every routing rule with the supplied synthetic category list; no category is omitted.",
+      "method": "review"
+    },
+    {
+      "id": "A-route",
+      "requirement_id": "R-route",
+      "check": "Run each labeled synthetic case through the prototype and compare its category with the expected label; all labels must match.",
+      "method": "test"
+    }
+  ],
+  "milestones": [
+    {
+      "kind": "discovery",
+      "deliverable_ids": [
+        "D-map"
+      ]
+    },
+    {
+      "kind": "implementation",
+      "deliverable_ids": [
+        "D-prototype"
+      ]
+    }
+  ],
+  "out_of_scope": [
+    "Production integration.",
+    "Ongoing hosting.",
+    "Route synthetic messages to a category and demonstrate the result."
+  ],
+  "assumptions": [],
+  "to_confirm": [
+    "Conflict: the brief both requires and excludes message routing; ask which instruction governs."
+  ],
+  "budget": {
+    "value": "USD 900",
+    "source_quote": "The illustrative budget is USD 900."
+  },
+  "deadline": {
+    "value": "2030-06-30",
+    "source_quote": "The illustrative deadline is 2030-06-30."
+  },
+  "hours": {
+    "value": "12 hours",
+    "source_quote": "The illustrative effort limit is 12 hours."
+  },
+  "rate": {
+    "value": "Fixed fee",
+    "source_quote": "Billing basis: Fixed fee."
+  },
+  "access": {
+    "value": "Local synthetic files only",
+    "source_quote": "Access approved for this fictional exercise: Local synthetic files only."
+  }
+}

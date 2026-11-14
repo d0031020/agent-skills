@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scope draft",
+  "description": "A local draft, never a quote or authorization.",
+  "type": "object",
+  "required": [
+    "brief",
+    "project_summary",
+    "requirements",
+    "deliverables",
+    "acceptance",
+    "milestones",
+    "out_of_scope",
+    "assumptions",
+    "to_confirm",
+    "budget",
+    "deadline",
+    "hours"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "brief": {
+      "$ref": "#/$defs/text",
+      "description": "Authorized, sanitized brief and confirmed clarification answers, embedded as literal source text."
+    },
+    "project_summary": {
+      "$ref": "#/$defs/text"
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "source_quote"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "text": {
+            "$ref": "#/$defs/text"
+          },
+          "source_quote": {
+            "$ref": "#/$defs/text"
+          }
+        }
+      },
+      "minItems": 1
+    },
+    "deliverables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "text",
+          "covers"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "text": {
+            "$ref": "#/$defs/text"
+          },
+          "covers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "acceptance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "requirement_id",
+          "check",
+          "method"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/id"
+          },
+          "requirement_id": {
+            "$ref": "#/$defs/id"
+          },
+          "check": {
+            "$ref": "#/$defs/text"
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "test",
+              "demo",
+              "review"
+            ]
+          }
+        }
+      }
+    },
+    "milestones": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "deliverable_ids"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "discovery",
+              "implementation"
+            ]
+          },
+          "deliverable_ids": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/id"
+            },
+            "uniqueItems": true
+          }
+        }
+      }
+    },
+    "out_of_scope": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "uniqueItems": true
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "uniqueItems": true
+    },
+    "to_confirm": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text"
+      },
+      "uniqueItems": true
+    },
+    "budget": {
+      "$ref": "#/$defs/commitment"
+    },
+    "deadline": {
+      "$ref": "#/$defs/commitment"
+    },
+    "hours": {
+      "$ref": "#/$defs/commitment"
+    },
+    "rate": {
+      "$ref": "#/$defs/commitment"
+    },
+    "access": {
+      "$ref": "#/$defs/commitment"
+    }
+  },
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]*$"
+    },
+    "commitment": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "required": [
+            "value",
+            "source_quote"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "$ref": "#/$defs/text"
+            },
+            "source_quote": {
+              "$ref": "#/$defs/text"
+            }
+          }
+        }
+      ],
+      "description": "Null means to confirm. A recorded value must appear verbatim in its source quote from brief; human review is still required."
+    }
+  }
+}

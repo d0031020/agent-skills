@@ -1,0 +1,12 @@
+{
+  "writes": [
+    {
+      "id": "crm-acme",
+      "written_at": "2030-01-01T10:00:00Z",
+      "required_fields": {
+        "company": "Acme Example",
+        "status": "active"
+      }
+    }
+  ]
+}

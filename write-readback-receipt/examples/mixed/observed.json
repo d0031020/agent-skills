@@ -1,0 +1,48 @@
+{
+  "snapshot_at": "2030-01-01T10:01:00Z",
+  "records": [
+    {
+      "id": "crm-verified",
+      "read_at": "2030-01-01T10:01:00Z",
+      "fields": {
+        "company": "Acme Example",
+        "status": "active",
+        "email": "fictional.person@example.com",
+        "private_note": "Illustrative private note; do not include in receipts."
+      }
+    },
+    {
+      "id": "crm-mismatch",
+      "read_at": "2030-01-01T10:01:00Z",
+      "fields": {
+        "company": "Beta Example",
+        "status": "inactive",
+        "email": "fictional.person@example.com",
+        "private_note": "Illustrative private note; do not include in receipts."
+      }
+    },
+    {
+      "id": "crm-alternative",
+      "read_at": "2030-01-01T10:01:00Z",
+      "fields": {
+        "company": "Delta Example",
+        "status": "active",
+        "email": "fictional.person@example.com",
+        "private_note": "Illustrative private note; do not include in receipts."
+      }
+    },
+    {
+      "id": "crm-stale",
+      "read_at": "2030-01-01T09:59:00Z",
+      "fields": {
+        "company": "Epsilon Example",
+        "status": "active",
+        "email": "fictional.person@example.com",
+        "private_note": "Illustrative private note; do not include in receipts."
+      }
+    }
+  ],
+  "pending_ids": [
+    "crm-pending"
+  ]
+}

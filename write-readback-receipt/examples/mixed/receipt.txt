@@ -1,0 +1,138 @@
+Receipt: fail
+Snapshot: 2030-01-01T10:01:00Z | Now: 2030-01-01T10:01:00Z
+Consistency check, not an audit certification. Supplied evidence is not authenticated.
+- crm-verified: verified
+- crm-mismatch: mismatch
+  Difference: {"expected": "[REDACTED]", "field": "status", "kind": "value", "observed": "[REDACTED]"}
+- crm-missing: missing
+  Reasons: id_absent
+- crm-wrong: wrong_id
+  Reasons: content_under_other_id
+  Candidate IDs: crm-alternative
+- crm-stale: stale
+  Reasons: read_before_write
+- crm-pending: pending
+  Reasons: readback_unavailable
+
+JSON receipt:
+{
+  "counts": {
+    "mismatch": 1,
+    "missing": 1,
+    "pending": 1,
+    "stale": 1,
+    "verified": 1,
+    "wrong_id": 1
+  },
+  "max_age_seconds": 300,
+  "notice": "Consistency check, not an audit certification. Supplied evidence is not authenticated.",
+  "now": "2030-01-01T10:01:00Z",
+  "receipts": [
+    {
+      "differences": [],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-verified",
+      "observed_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "read_at": "2030-01-01T10:01:00Z",
+      "reasons": [],
+      "status": "verified",
+      "written_at": "2030-01-01T10:00:00Z"
+    },
+    {
+      "differences": [
+        {
+          "expected": "[REDACTED]",
+          "field": "status",
+          "kind": "value",
+          "observed": "[REDACTED]"
+        }
+      ],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-mismatch",
+      "observed_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "read_at": "2030-01-01T10:01:00Z",
+      "reasons": [],
+      "status": "mismatch",
+      "written_at": "2030-01-01T10:00:00Z"
+    },
+    {
+      "candidate_ids": [],
+      "differences": [],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-missing",
+      "observed_fields": {},
+      "reasons": [
+        "id_absent"
+      ],
+      "status": "missing",
+      "written_at": "2030-01-01T10:00:00Z"
+    },
+    {
+      "candidate_ids": [
+        "crm-alternative"
+      ],
+      "differences": [],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-wrong",
+      "observed_fields": {},
+      "reasons": [
+        "content_under_other_id"
+      ],
+      "status": "wrong_id",
+      "written_at": "2030-01-01T10:00:00Z"
+    },
+    {
+      "differences": [],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-stale",
+      "observed_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "read_at": "2030-01-01T09:59:00Z",
+      "reasons": [
+        "read_before_write"
+      ],
+      "status": "stale",
+      "written_at": "2030-01-01T10:00:00Z"
+    },
+    {
+      "differences": [],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-pending",
+      "observed_fields": {},
+      "reasons": [
+        "readback_unavailable"
+      ],
+      "status": "pending",
+      "written_at": "2030-01-01T10:00:00Z"
+    }
+  ],
+  "show_fields": [],
+  "snapshot_at": "2030-01-01T10:01:00Z",
+  "status": "fail"
+}

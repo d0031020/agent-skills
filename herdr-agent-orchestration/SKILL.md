@@ -1,6 +1,6 @@
 ---
 name: herdr-agent-orchestration
-description: How a lead Claude session drives other CLI coding agents in herdr panes: task file, one-line prompt, background wait, then verify the result. Use when you delegate work to agents running in herdr panes and must handle busy panes, blocked dialogs and fresh pane startup.
+description: "How a lead Claude session drives other CLI coding agents in herdr panes: task file, one-line prompt, background wait, then verify the result. Use when you delegate work to agents running in herdr panes and must handle busy panes, blocked dialogs and fresh pane startup."
 ---
 
 # Orchestrating CLI agents through herdr

@@ -1,0 +1,35 @@
+{
+  "counts": {
+    "mismatch": 0,
+    "missing": 0,
+    "pending": 0,
+    "stale": 0,
+    "verified": 0,
+    "wrong_id": 1
+  },
+  "max_age_seconds": 300,
+  "notice": "Consistency check, not an audit certification. Supplied evidence is not authenticated.",
+  "now": "2030-01-01T10:01:00Z",
+  "receipts": [
+    {
+      "candidate_ids": [
+        "crm-other"
+      ],
+      "differences": [],
+      "expected_fields": {
+        "company": "[REDACTED]",
+        "status": "[REDACTED]"
+      },
+      "id": "crm-claimed",
+      "observed_fields": {},
+      "reasons": [
+        "content_under_other_id"
+      ],
+      "status": "wrong_id",
+      "written_at": "2030-01-01T10:00:00Z"
+    }
+  ],
+  "show_fields": [],
+  "snapshot_at": "2030-01-01T10:01:00Z",
+  "status": "fail"
+}
