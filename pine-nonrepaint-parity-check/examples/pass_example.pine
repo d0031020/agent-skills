@@ -1,0 +1,25 @@
+//@version=6
+// Illustrative fictional values only; no tuned parameters or performance claims.
+// Not financial or investment advice. Use a chart timeframe below 1D.
+strategy("Illustrative HTF comparison", shorttitle="ToyHTF",
+    calc_on_every_tick=false, process_orders_on_close=false,
+    commission_type=strategy.commission.cash_per_contract, commission_value=1.0,
+    slippage=1, backtest_fill_limits_assumption=1, pyramiding=0)
+
+const string SCRIPT_VERSION = "1.0.0"
+const string HTF = "1D"
+const string TOY_SESSION = "0900-1500"
+const int STOP_TICKS = 10
+const int TARGET_TICKS = 20
+if barstate.isfirst and timeframe.in_seconds() >= timeframe.in_seconds(HTF)
+    runtime.error("Use a chart timeframe below 1D.")
+htfClose = request.security(syminfo.tickerid, HTF, close[1], lookahead=barmerge.lookahead_off)
+inSession = not na(time(timeframe.period, TOY_SESSION, syminfo.timezone))
+if barstate.isconfirmed
+    if inSession and close > htfClose and strategy.position_size == 0
+        strategy.entry("Long", strategy.long, alert_message="{{strategy.order.id}}")
+    if strategy.position_size > 0
+        stopPrice = strategy.position_avg_price - STOP_TICKS * syminfo.mintick
+        limitPrice = strategy.position_avg_price + TARGET_TICKS * syminfo.mintick
+        strategy.exit("Exit", "Long", stop=stopPrice, limit=limitPrice, alert_message="{{strategy.order.id}}")
+plot(htfClose, title="Previous HTF close")

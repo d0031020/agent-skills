@@ -1,0 +1,2 @@
+pytest==9.2.0
+pynescript==0.3.0

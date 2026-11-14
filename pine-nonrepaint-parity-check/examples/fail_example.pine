@@ -1,0 +1,28 @@
+//@version=6
+// Deliberate failure fixture with illustrative fictional, untuned values.
+// Not financial or investment advice. The token below is obviously fake.
+strategy("Illustrative HTF comparison", shorttitle="ToyHTFTooLong", // VIOLATION: shorttitle > 10 chars
+    calc_on_every_tick=true, // VIOLATION: calc_on_every_tick=true
+    process_orders_on_close=true, // VIOLATION: process_orders_on_close=true
+    commission_type=strategy.commission.cash_per_contract, commission_value=1.0,
+    slippage=1, backtest_fill_limits_assumption=1, pyramiding=0)
+
+const string SCRIPT_VERSION = "1.0.0"
+const string HTF = "1D"
+const string TOY_SESSION = "0900-1500"
+const int STOP_TICKS = 10
+const int TARGET_TICKS = 20
+if barstate.isfirst and timeframe.in_seconds() >= timeframe.in_seconds(HTF)
+    runtime.error("Use a chart timeframe below 1D.")
+htfClose = request.security(syminfo.tickerid, HTF, close, lookahead=barmerge.lookahead_on) // VIOLATION: lookahead_on without [1]
+inSession = not na(time(timeframe.period, TOY_SESSION, syminfo.timezone))
+if barstate.isconfirmed
+    if inSession and close > htfClose and strategy.position_size == 0
+        strategy.entry("Long", strategy.long, alert_message="FAKE_TOKEN_DO_NOT_USE") // VIOLATION: fake secret in alert text
+    if strategy.position_size > 0
+        stopPrice = strategy.position_avg_price - STOP_TICKS * syminfo.mintick
+        limitPrice = strategy.position_avg_price + TARGET_TICKS * syminfo.mintick
+        strategy.exit("Exit", "Long", stop=stopPrice, limit=limitPrice, alert_message="{{strategy.order.id}}")
+plot(htfClose, title="Previous HTF close")
+pivotHigh = ta.pivothigh(high, 2, 2)
+plot(pivotHigh, title="Backdated pivot", offset=-2) // VIOLATION: pivot plotted at negative offset
